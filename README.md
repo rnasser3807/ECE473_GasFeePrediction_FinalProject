@@ -22,12 +22,11 @@ To run the Ethereum Transaction Predictor locally, follow these steps:
 3. Install dependencies for the front-end and back-end.
 4. Start the front-end and back-end servers.
 
-
 ## Usage
 
 1. Open your web browser and navigate to the URL where the front-end server is running.
-2. Input transaction details such as transaction amount, recipient address, etc.
-3. Click the "Predict" button to receive predictions for the optimal transaction time and estimated gas fees.
+2. Input time frame in which you want to conduct the next transaction.
+3. Click the "Generate Prediction" button to receive predictions for the optimal transaction time and estimated gas fees.
 
 ## Technologies Used
 
