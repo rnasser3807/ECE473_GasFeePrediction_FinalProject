@@ -1,6 +1,6 @@
 # Ethereum Gas Fee Predictor
 
-Welcome to Ethereum Gas Fee Predictor! This project is designed to help users determine the optimal time to conduct Ethereum transactions by predicting gas fees using an ARIMA model. For further details on our project, refer to the source notion page.
+Welcome to Ethereum Gas Fee Predictor! This project is designed to help users determine the optimal time to conduct Ethereum transactions by predicting gas fees using an ARIMA model. For further details on our project, refer to the [source notion page]([url](https://www.notion.so/Prediction-of-Future-Ethereum-Transaction-Gas-Fees-Through-an-Adjusted-Autoregressive-Integrated-Mov-44690d283fe44c2e858183d7959eb812)).
 
 ## Overview
 
