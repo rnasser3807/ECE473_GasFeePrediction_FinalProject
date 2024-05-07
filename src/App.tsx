@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ethereumImage from './Ethereum-icon-purple.svg.png';
 
 const GasFeeCalculator: React.FC = () => {
+
   const [timeFrame, setTimeFrame] = useState<number>(1); // Setting initial value of timeFrame to 1
   const [optimalTimeRange, setOptimalTimeRange] = useState<string>("");
-  const [gasFee, setGasFee] = useState<number>(0);
+  const [gasFee, setGasFee] = useState<number>(2);
 
   const handleCalculate = () => {
-    const randomOptimalTime = Math.floor(Math.random() * 11) + 1; // Random hour between 1 and 12
-    const randomGasFee = Math.floor(Math.random() * 10 + timeFrame + 5); // Random gas fee based on input timeFrame
-
-    setOptimalTimeRange(`${randomOptimalTime}:00 pm - ${randomOptimalTime + 1}:00 pm EST`);
-    setGasFee(randomGasFee);
+    const OptimalTime = Math.floor(Math.random() * 11) + 1; // generate starting hour
+    const GasFee = Math.floor(Math.random() * 10 + timeFrame + 5); // generate starting gas fee
+    setOptimalTimeRange(`${OptimalTime}:00 pm - ${OptimalTime + 1}:00 pm EST`);
+    setGasFee(GasFee);
   };
+
+  useEffect(() => {
+    fetch("/api/ml").then(res => res.json()).then(data => { setGasFee(data.predict(timeFrame)) });
+    fetch("/api/ml").then(res => res.json()).then(data => { setOptimalTimeRange(data.predict(timeFrame)) });
+  }, []) // access predicted values in python code and set gas fee and time accordingly
+  
 
   const handleTimeFrameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = parseInt(e.target.value);
@@ -44,7 +50,7 @@ const GasFeeCalculator: React.FC = () => {
         {optimalTimeRange && (
           <p>Optimal Transaction Time: {optimalTimeRange}</p>
         )}
-        {gasFee !== 0 && (
+        {gasFee != 0 && (
           <p>Estimated Gas Fee: {gasFee} Gwei</p>
         )}
       </div>
